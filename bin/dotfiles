@@ -29,7 +29,7 @@ genlinks() {
 case "$1" in
 
   "add")
-    ALL_FILES=${1+"$@"}
+    ALL_FILES=${@:2:${!#}}
     echo "all files: $ALL_FILES"
     for FILES in $ALL_FILES
     do
