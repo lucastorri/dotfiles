@@ -14,7 +14,7 @@ then
   mkdir $DOTFILES_REPO
 fi
 
-if [ "$GIT_REPO" == "" ]
+if [ "$1" == "" ]
 then
   cd $DOTFILES
   git remote rm origin
@@ -25,4 +25,4 @@ then
 fi
 
 cd $DOTFILES
-echo "bash < <(curl -s $GIT_REPO)" > README
+# fix url: echo "bash < <(curl -s $GIT_REPO)" > README
