@@ -24,5 +24,10 @@ then
   git push -u origin master
 fi
 
+for FILE in `ls $DOTFILES/dotfiles`
+do
+  ln -s $FILE $HOME
+done
+
 cd $DOTFILES
 # fix url: echo "bash < <(curl -s $GIT_REPO)" > README
