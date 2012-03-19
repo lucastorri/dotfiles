@@ -1,35 +1,34 @@
 #!/bin/bash
 
+ORIGINAL_REPO="git@github.com:lucastorri/dotfiles.git"
+
+GIT_REPO=$ORIGINAL_REPO
+
 DOTFILES=$HOME/.dotfiles
 
-GIT_REPO=$1
-
-git clone ${GIT_REPO:="/Users/lucastorri/Projects/dotfiles-control"} $DOTFILES
+git clone $GIT_REPO $DOTFILES
 
 echo "export PATH=\$PATH:$DOTFILES/bin" >> $HOME/.bashrc
 
 if [ ! -d $DOTFILES/dotfiles ]
 then
-  DOTFILES_REPO=$DOTFILES/dotfiles
-  mkdir $DOTFILES_REPO
+  mkdir $DOTFILES/dotfiles
 fi
 
-if [ "$1" == "" ]
+if [ "$GIT_REPO" == "$ORIGINAL_REPO" ]
 then
   cd $DOTFILES
+  cat install | sed "s/GIT_REPO=\$ORIGINAL_REPO/GIT_REPO=$GIT_REPO/g" > install
   git remote rm origin
   read -p "Which is your repo? " GIT_REPO
   git remote add origin "$GIT_REPO"
   git push -u origin master
+  git remote add dotfiles $ORIGINAL_REPO
 fi
-
-cd $DOTFILES
-git remote add dotfiles git://github.com/lucastorri/dotfiles.git
 
 for FILE in `ls -A $DOTFILES/dotfiles`
 do
   ln -s $DOTFILES/dotfiles/$FILE $HOME
 done
 
-cd $DOTFILES
 # fix url: echo "bash < <(curl -s $GIT_REPO)" > README
