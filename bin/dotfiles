@@ -3,6 +3,29 @@
 DOTFILES=`dirname "$0"`
 BASE=$DOTFILES/../dotfiles
 
+genlinks() {
+  for FILE in `ls -A $BASE`
+  do
+    FILEPATH=$BASE/$FILE
+    DEST=$HOME/$FILE
+    OLD=$HOME/old.dotfiles
+    if [ -a  "$DEST" ]
+    then
+      if [ ! -d $OLD ]
+      then
+        mkdir -p $OLD
+      fi
+      DEST_REAL=$DEST
+      if [ -h "$DEST" ]
+      then
+        DEST_REAL=`readlink $DEST`
+      fi
+      mv $DEST_REAL $OLD
+    fi
+    ln -s $FILEPATH $DEST
+  done
+}
+
 case "$1" in
 
   "add")
@@ -37,6 +60,10 @@ case "$1" in
     cd $DOTFILES
     git fetch dotfiles
     git merge dotfiles/master
+  ;;
+
+  "genlinks")
+    genlinks
   ;;
 
   *)
