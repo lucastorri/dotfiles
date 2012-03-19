@@ -4,7 +4,7 @@ DOTFILES=$HOME/.dotfiles
 
 GIT_REPO=$1
 
-git clone ${GIT_REPO:="git@github.com:lucastorri/dotfiles-control.git"} $DOTFILES
+git clone ${GIT_REPO:="git://github.com/lucastorri/dotfiles.git"} $DOTFILES
 
 echo "export PATH=\$PATH:$DOTFILES/bin" >> $HOME/.bashrc
 
@@ -23,6 +23,8 @@ then
   git remote add origin "$GIT_REPO"
   git push -u origin master
 fi
+
+git remote add src git://github.com/lucastorri/dotfiles.git
 
 for FILE in `ls -A $DOTFILES/dotfiles`
 do

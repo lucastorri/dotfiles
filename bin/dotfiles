@@ -1,6 +1,7 @@
 #!/bin/bash
 
-BASE=`dirname "$0"`/../dotfiles
+DOTFILES=`dirname "$0"`
+BASE=$DOTFILES/../dotfiles
 
 case "$1" in
 
@@ -24,6 +25,17 @@ case "$1" in
     cd $BASE
     git commit -am "saving `date`"
     git push origin master
+  ;;
+
+  "update")
+    cd $DOTFILES
+    git pull
+  ;;
+
+  "upgrade")
+    cd $DOTFILES
+    git fetch src
+    git merge src/master
   ;;
 
 esac
