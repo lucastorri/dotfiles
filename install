@@ -18,8 +18,7 @@ if [ "$1" == "" ]
 then
   cd $DOTFILES
   git remote rm origin
-  echo "Which is your repo?"
-  read GIT_REPO
+  read -p "Which is your repo?" GIT_REPO
   git remote add origin "$GIT_REPO"
   git push -u origin master
 fi
