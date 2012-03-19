@@ -1,7 +1,6 @@
 #!/bin/bash
 
 BASE=`dirname "$0"`/../dotfiles
-echo $BASE
 
 case "$1" in
 
@@ -16,7 +15,15 @@ case "$1" in
     ln -s $BASE/$FILENAME $HOME/$FILENAME
     cd $BASE
     git add $FILENAME
-    git push
+    cd ..
+    git commit -m "adding $FILENAME"
+    git push origin master
+  ;;
+
+  "save")
+    cd $BASE
+    git commit -am "saving `date`"
+    git push origin master
   ;;
 
 esac

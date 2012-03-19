@@ -14,7 +14,7 @@ then
   mkdir $DOTFILES_REPO
 fi
 
-if [ "$1" == "" ]
+if [ "$GIT_REPO" == "" ]
 then
   cd $DOTFILES
   git remote rm origin
@@ -23,3 +23,6 @@ then
   git remote add origin "$GIT_REPO"
   git push -u origin master
 fi
+
+cd $DOTFILES
+echo "bash < <(curl -s $GIT_REPO)"
