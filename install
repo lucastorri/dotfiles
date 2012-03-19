@@ -2,9 +2,9 @@
 
 DOTFILES=$HOME/.dotfiles
 
-$GIT_REPO=$1
+GIT_REPO=$1
 
-git clone ${GIT_REPO:="/Users/lucastorri/Projects/dotfiles-control"} $DOTFILES
+git clone ${GIT_REPO:="git@github.com:lucastorri/dotfiles-control.git"} $DOTFILES
 
 echo "export PATH=\$PATH:$DOTFILES/bin" >> $HOME/.bashrc
 
@@ -21,5 +21,5 @@ then
   echo "Which is your repo?"
   read GIT_REPO
   git remote add origin "$GIT_REPO"
-  git push
+  git push -u origin master
 fi
