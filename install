@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ORIGINAL_REPO="git@github.com:lucastorri/dotfiles.git"
+ORIGINAL_REPO="git@github.com:lucastorri/dotfiles-control.git"
 
 GIT_REPO=$ORIGINAL_REPO
 
