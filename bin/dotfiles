@@ -5,6 +5,9 @@ cd "$DOTFILES/../dotfiles"
 BASE=`pwd`
 cd -
 
+trim() {
+  echo $1
+}
 
 genlinks() {
   for FILE in `ls -A $BASE`
@@ -47,8 +50,8 @@ case "$1" in
           then
             FILE=`readlink $FILE`
           fi
-          mv "$FILE" "$BASE/$FILENAME"
-          ln -s "$BASE/$FILENAME" "$HOME/$FILENAME"
+          mv `trim "$FILE"` `trim "$BASE/$FILENAME"`
+          ln -s `trim "$BASE/$FILENAME"` `trim "$HOME/$FILENAME"`
           cd $BASE
           git add $FILENAME
           cd ..
