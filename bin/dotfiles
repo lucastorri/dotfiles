@@ -1,7 +1,10 @@
 #!/bin/bash
 
 DOTFILES=`dirname "$0"`
-BASE=$DOTFILES/../dotfiles
+cd "$DOTFILES/../dotfiles"
+BASE=`pwd`
+cd -
+
 
 genlinks() {
   for FILE in `ls -A $BASE`
@@ -29,7 +32,7 @@ genlinks() {
 case "$1" in
 
   "add")
-    ALL_FILES="${@:2:${!#}}"
+    ALL_FILES="${@:2:${#}}"
     echo "all files: $ALL_FILES"
     for FILES in $ALL_FILES
     do
