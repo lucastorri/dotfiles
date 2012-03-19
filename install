@@ -27,6 +27,7 @@ then
   git push -u origin master
 fi
 
+cd $DOTFILES
 git remote add dotfiles $ORIGINAL_REPO
 
 for FILE in `ls -A $DOTFILES/dotfiles`
