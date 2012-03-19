@@ -2,7 +2,9 @@
 
 DOTFILES=$HOME/.dotfiles
 
-git clone ${1:="/Users/lucastorri/Projects/dotfiles-control"} $DOTFILES
+$GIT_REPO=$1
+
+git clone ${GIT_REPO:="/Users/lucastorri/Projects/dotfiles-control"} $DOTFILES
 
 echo "export PATH=\$PATH:$DOTFILES/bin" >> $HOME/.bashrc
 
