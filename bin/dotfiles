@@ -29,23 +29,28 @@ genlinks() {
 case "$1" in
 
   "add")
-    FILES="$2"
-    for FILE in "$FILES"
+    ALL_FILES=${1+"$@"}
+    for FILES in ALL_FILES
     do
-      if [ $FILE != "." ] && [ $FILE != ".." ]
-      then
-        FILENAME=`basename $FILE`
-        if [ -h "$FILE" ]
+      echo "files: $FILES"
+      for FILE in "$FILES"
+      do
+        echo "file: $FILE"
+        if [ $FILE != "." ] && [ $FILE != ".." ]
         then
-          FILE=`readlink $FILE`
+          FILENAME=`basename $FILE`
+          if [ -h "$FILE" ]
+          then
+            FILE=`readlink $FILE`
+          fi
+          mv $FILE $BASE/$FILENAME
+          ln -s $BASE/$FILENAME $HOME/$FILENAME
+          cd $BASE
+          git add $FILENAME
+          cd ..
+          git commit -m "adding $FILENAME"
         fi
-        mv $FILE $BASE/$FILENAME
-        ln -s $BASE/$FILENAME $HOME/$FILENAME
-        cd $BASE
-        git add $FILENAME
-        cd ..
-        git commit -m "adding $FILENAME"
-      fi
+      done
     done
     git push origin master
   ;;
