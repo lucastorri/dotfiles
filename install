@@ -25,4 +25,4 @@ then
 fi
 
 cd $DOTFILES
-echo "bash < <(curl -s $GIT_REPO)"
+echo "bash < <(curl -s $GIT_REPO)" > README
