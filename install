@@ -24,7 +24,7 @@ then
   git push -u origin master
 fi
 
-for FILE in `ls $DOTFILES/dotfiles`
+for FILE in `ls -A $DOTFILES/dotfiles`
 do
   ln -s $FILE $HOME
 done
