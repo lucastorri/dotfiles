@@ -18,10 +18,10 @@ fi
 if [ "$GIT_REPO" == "$ORIGINAL_REPO" ]
 then
   cd $DOTFILES
+  git remote add origin "$GIT_REPO"
   cat install | sed "s/GIT_REPO=\$ORIGINAL_REPO/GIT_REPO=$GIT_REPO/g" > install
   git remote rm origin
   read -p "Which is your repo? " GIT_REPO
-  git remote add origin "$GIT_REPO"
   git push -u origin master
   git remote add dotfiles $ORIGINAL_REPO
 fi
