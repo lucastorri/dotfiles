@@ -30,7 +30,8 @@ case "$1" in
 
   "add")
     ALL_FILES=${1+"$@"}
-    for FILES in ALL_FILES
+    echo "all files: $ALL_FILES"
+    for FILES in $ALL_FILES
     do
       echo "files: $FILES"
       for FILE in "$FILES"
