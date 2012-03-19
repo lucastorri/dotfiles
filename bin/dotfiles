@@ -34,8 +34,8 @@ case "$1" in
 
   "upgrade")
     cd $DOTFILES
-    git fetch src
-    git merge src/master
+    git fetch dotfiles
+    git merge dotfiles/master
   ;;
 
 esac

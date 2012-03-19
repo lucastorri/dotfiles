@@ -4,7 +4,7 @@ DOTFILES=$HOME/.dotfiles
 
 GIT_REPO=$1
 
-git clone ${GIT_REPO:="git://github.com/lucastorri/dotfiles.git"} $DOTFILES
+git clone ${GIT_REPO:="/Users/lucastorri/Projects/dotfiles-control"} $DOTFILES
 
 echo "export PATH=\$PATH:$DOTFILES/bin" >> $HOME/.bashrc
 
@@ -18,16 +18,17 @@ if [ "$1" == "" ]
 then
   cd $DOTFILES
   git remote rm origin
-  read -p "Which is your repo?" GIT_REPO
+  read -p "Which is your repo? " GIT_REPO
   git remote add origin "$GIT_REPO"
   git push -u origin master
 fi
 
-git remote add src git://github.com/lucastorri/dotfiles.git
+cd $DOTFILES
+git remote add dotfiles git://github.com/lucastorri/dotfiles.git
 
 for FILE in `ls -A $DOTFILES/dotfiles`
 do
-  ln -s $FILE $HOME
+  ln -s $DOTFILES/dotfiles/$FILE $HOME
 done
 
 cd $DOTFILES
