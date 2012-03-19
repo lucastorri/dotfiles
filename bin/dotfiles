@@ -36,7 +36,7 @@ case "$1" in
     then
       FILE=`readlink $FILE`
     fi
-    mv $FILE $BASE
+    mv $FILE $BASE/$FILENAME
     ln -s $BASE/$FILENAME $HOME/$FILENAME
     cd $BASE
     git add $FILENAME
