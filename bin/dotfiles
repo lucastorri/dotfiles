@@ -38,5 +38,9 @@ case "$1" in
     git merge dotfiles/master
   ;;
 
+  *)
+    echo "Unknown command!"
+  ;;
+
 esac
 
