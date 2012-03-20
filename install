@@ -27,8 +27,7 @@ then
   git push -u origin master
 
   INSTALL_SCRIPT=`echo $GIT_REPO | sed 's|.*github.com/\(.*\)/\(.*\)\(\.git\)*|https://raw.github.com/\1/\2/master/install|g'`
-  echo "$GIT_REPO" > README
-  echo "bash < <(curl -s $INSTALL_SCRIPT)" >> README
+  echo "bash < <(curl -s $INSTALL_SCRIPT)" > README
 fi
 
 cd $DOTFILES
