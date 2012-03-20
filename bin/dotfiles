@@ -87,6 +87,17 @@ case "$1" in
     genlinks
   ;;
 
+  "clean")
+    cd $HOME
+    for FILE in `ls -A1`
+    do
+      if [ -h "$FILE" ] && [[ `readlink "$FILE"` =~ .*"$HOME/.dotfiles/dotfiles/".* ]]
+      then
+        echo $FILE
+      fi
+    done
+  ;;
+
   *)
     echo "! Unknown command"
   ;;
