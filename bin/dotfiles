@@ -3,7 +3,7 @@
 DOTFILES=`dirname "$0"`
 cd "$DOTFILES/../dotfiles"
 BASE=`pwd`
-cd -
+CURRENT_DIR=`cd -`
 
 trim() {
   echo $1
@@ -36,22 +36,25 @@ case "$1" in
 
   "add")
     ALL_FILES="${@:2:${#}}"
-    echo "all files: $ALL_FILES"
-    for FILES in $ALL_FILES
+    for FILES in `echo $ALL_FILES`
     do
-      echo "files: $FILES"
-      for FILE in "$FILES"
+      for FILE in `echo "$FILES"`
       do
-        echo "file: $FILE"
         if [ $FILE != "." ] && [ $FILE != ".." ]
         then
+          cd $CURRENT_DIR
           FILENAME=`basename $FILE`
           if [ -h "$FILE" ]
           then
             FILE=`readlink $FILE`
           fi
-          mv `trim "$FILE"` `trim "$BASE/$FILENAME"`
-          ln -s `trim "$BASE/$FILENAME"` `trim "$HOME/$FILENAME"`
+          if [ `basename "$FILE"` == "$FILENAME" ]
+          then
+            mv `trim $FILE` `trim $BASE`
+          else
+            mv `trim $FILE` `trim $BASE/$FILENAME`
+          fi
+          ln -s `trim $BASE/$FILENAME` `trim $HOME/$FILENAME`
           cd $BASE
           git add $FILENAME
           cd ..
