@@ -77,7 +77,7 @@ case "$1" in
   "update")
     cd $DOTFILES
     git pull
-    # add sim link to new files, check existent files to see if they are already there (if same, keep, otherwise move to old)
+    genlinks
   ;;
 
   "upgrade")
