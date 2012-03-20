@@ -3,7 +3,7 @@
 DOTFILES=`dirname "$0"`
 cd "$DOTFILES/../dotfiles"
 BASE=`pwd`
-CURRENT_DIR=`cd -`
+CURRENT_FOLDER=`cd -`
 
 trim() {
   echo $1
@@ -42,7 +42,7 @@ case "$1" in
       do
         if [ $FILE != "." ] && [ $FILE != ".." ]
         then
-          cd $CURRENT_DIR
+          cd $CURRENT_FOLDER
           FILENAME=`basename $FILE`
           if [ -h "$FILE" ]
           then
@@ -63,6 +63,29 @@ case "$1" in
       done
     done
     git push origin master
+  ;;
+
+  "select")
+    #WIP
+    exit 1
+    FOLDER=$2
+    # [ $ans == "y" ] && return 0 || return 1
+    if [ ! -d "$FOLDER" ]
+    then
+      echo "! Not a folder"
+      exit 1
+    fi
+    for FILE in `ls -R`
+    do
+      if [ -f "$FILE" ]
+      then
+        read -p "Include $FILE? (y/n)" Y_OR_N
+        if [ "$Y_OR_N" == "y" ]
+        then
+          echo 1
+        fi
+      fi
+    done
   ;;
 
   "save")
@@ -88,7 +111,7 @@ case "$1" in
   ;;
 
   *)
-    echo "Unknown command!"
+    echo "! Unknown command"
   ;;
 
 esac
