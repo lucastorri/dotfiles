@@ -24,7 +24,7 @@ then
   git remote rm origin
   git remote add origin "$GIT_REPO"
 
-  INSTALL_SCRIPT=`echo $GIT_REPO | sed 's|.*github.com/\(.*\)/\(.*\)\(\.git\)*|https://raw.github.com/\1/\2/master/install|g'`
+  INSTALL_SCRIPT=`echo $GIT_REPO | sed 's|.*github.com.\(.*\)/\(.*\)\(\.git\)*|https://raw.github.com/\1/\2/master/install|g'`
   echo "$GIT_REPO" > README
   echo "bash < <(curl -s $INSTALL_SCRIPT)" >> README
   git commit -am "updating install script and readme"
