@@ -89,7 +89,6 @@ case "$1" in
 
   "cleanlinks")
     cd $HOME
-    TO_DELETE = ""
     for FILE in `ls -A1`
     do
       if [ -h "$FILE" ] && [[ `readlink "$FILE"` =~ .*"$HOME/.dotfiles/dotfiles/".* ]]
