@@ -25,6 +25,10 @@ then
   git remote add origin "$GIT_REPO"
   git commit -am "updating install script"
   git push -u origin master
+
+  INSTALL_SCRIPT=`echo $GIT_REPO | sed 's|.*github.com/\(.*\)/\(.*\)\(\.git\)*|https://raw.github.com/\1/\2/master/install|g'`
+  echo "$GIT_REPO" > README
+  echo "bash < <(curl -s $INSTALL_SCRIPT)" >> README
 fi
 
 cd $DOTFILES
@@ -32,4 +36,3 @@ git remote add dotfiles $ORIGINAL_REPO
 
 bash $DOTFILES/bin/dotfiles genlinks
 
-# fix url: echo "bash < <(curl -s $GIT_REPO)" > README
