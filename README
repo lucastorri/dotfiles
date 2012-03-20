@@ -1,1 +1,0 @@
-bash <(curl https://raw.github.com/lucastorri/dotfiles-control/master/install)
