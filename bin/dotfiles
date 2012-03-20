@@ -26,7 +26,10 @@ genlinks() {
       then
         DEST_REAL=`readlink $DEST`
       fi
-      mv $DEST_REAL $OLD
+      if [[ ! "$DEST_REAL" =~ .*"$HOME/.dotfiles/dotfiles/".* ]]
+      then
+        mv $DEST_REAL $OLD
+      fi
     fi
     ln -s $FILEPATH $DEST
   done
