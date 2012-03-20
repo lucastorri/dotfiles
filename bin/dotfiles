@@ -31,7 +31,7 @@ genlinks() {
         mv $DEST_REAL $OLD
       fi
     fi
-    if [ ! -a $DEST ]
+    if [ ! -e "$DEST" ]
     then
       ln -s $FILEPATH $DEST
     fi
