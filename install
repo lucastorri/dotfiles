@@ -2,7 +2,7 @@
 
 ORIGINAL_REPO="git@github.com:lucastorri/dotfiles-control.git"
 
-GIT_REPO=$ORIGINAL_REPO
+GIT_REPO=https://github.com/lucastorri/dotfiles.git
 
 DOTFILES=$HOME/.dotfiles
 
