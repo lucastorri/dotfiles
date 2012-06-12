@@ -1,0 +1,11 @@
+[user]
+	name = Lucas Torri
+	email = lucastorri@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+    lg = log --graph --oneline
+[core]
+	editor = mvim -f
