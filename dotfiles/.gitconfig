@@ -5,7 +5,31 @@
 	diff = auto
 	status = auto
 	branch = auto
+    log = auto
 [alias]
     lg = log --graph --oneline
+
+[color "branch"]
+    current = yellow
+    local = green
+    remote = cyan
+
+[color "diff"]
+    meta = yellow 
+    frag = cyan 
+    old = red
+    new = green 
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = blue
+
 [core]
-	editor = mvim -f
+    whitespace=fix,-indent-with-non-tab,trailing-space,space-before-tab,cr-at-eol
+
+[alias]
+    lg = log --graph --pretty=format:'%C(yellow)%h %Cblue%aN %Cgreen%ar %Creset%s'
+    ls = !git lg --stat
+    lc = !git lg --name-status #short whatchanged
+    pr = pull --rebase
