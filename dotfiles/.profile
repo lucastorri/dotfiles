@@ -21,9 +21,6 @@ up() { LIMIT=$1; P=$PWD; for ((i=1; i <= LIMIT; i++)); do P=$P/..; done; cd $P; 
 
 export EDITOR='subl -w'
 
-alias proxy-nokia="export http_proxy=http://nokes.nokia.com:8080; export https_proxy=http://nokes.nokia.com:8080"
-alias proxy-clear="unset http_proxy https_proxy"
-
 export BYOBU_PREFIX=$(brew --prefix)
 
 source ~/.pcur
