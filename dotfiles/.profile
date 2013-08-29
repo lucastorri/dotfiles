@@ -26,16 +26,4 @@ alias proxy-clear="unset http_proxy https_proxy"
 
 export BYOBU_PREFIX=$(brew --prefix)
 
-alias pcur-jenkins="ssh jenkins@jenkins01.places.devbln.europe.nokia.com"
-
-alias pcur-prod-info="curl -k -H 'X-Test: akbiygqpmzmipfxtrtyyzde' -H 'X-Debug: true' https://curator.places.lbs.maps.nokia.com/pcur/internal/configuration"
-alias pcur-prod-version="curl -k -H 'X-Test: akbiygqpmzmipfxtrtyyzde' -H 'X-Debug: true' https://curator.places.lbs.maps.nokia.com/pcur/internal/version"
-
-alias pcur-stg-info="curl -k -H 'X-Test: akbiygqpmzmipfxtrtyyzde' -H 'X-Debug: true' https://stg.curator.places.lbs.maps.nokia.com/pcur/internal/configuration"
-alias pcur-stg-version="curl -k -H 'X-Test: akbiygqpmzmipfxtrtyyzde' -H 'X-Debug: true' https://stg.curator.places.lbs.maps.nokia.com/pcur/internal/version"
-
-alias pcur-pmod-info="curl -k -H 'X-Test: akbiygqpmzmipfxtrtyyzde' -H 'X-Deug: true' http://pmod1-dev.places.devbln.europe.nokia.com:8203/pcur/internal/configuration"
-alias pcur-pmod-ssh="ssh tomcat@pmod1-dev.places.devbln.europe.nokia.com"
-
-alias pcur-local-info="curl -k -H 'X-Test: akbiygqpmzmipfxtrtyyzde' -H 'X-Deug: true' https://localhost:8443/pcur/internal/configuration"
-alias pcur-local-db="/usr/local/mysql/bin/mysql -u pcur -ppcur pcur"
+source ~/.pcur
